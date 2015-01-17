@@ -24,10 +24,11 @@ var Main = React.createClass({displayName: "Main",
 , componentDidMount: function() {
     if (!location.search) return;
     
-    var query = qs.parse(location.search);
-    if (!query.openid || !query.openid.claimed_id) return;
+    var query = qs.parse(location.search.substr(1)) || {};
+    var id = query['openid.claimed_id'];
+    if (!id) return;
 
-    var steamId = query.openid.claimed_id.replace('http://steamcommunity.com/openid/id/', '');
+    var steamId = id.replace('http://steamcommunity.com/openid/id/', '');
     this.setState({
       steamId: steamId
     });
@@ -18542,7 +18543,7 @@ module.exports = require('./lib/React');
 },{"./lib/React":35}],154:[function(require,module,exports){
 module.exports={
   "name": "steamturbine",
-  "version": "1.0.0-ca06",
+  "version": "1.0.0-6698",
   "description": "Steam games explorer",
   "private": true,
   "main": "index.js",
