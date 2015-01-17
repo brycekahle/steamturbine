@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       }
     , travis: {
         options: {
-          repo: 'https://<%= process.env.GH_TOKEN %>@github.com/brycekahle/steamturbine.git'
+          repo: 'https://' + process.env.GH_TOKEN + '@github.com/brycekahle/steamturbine.git'
         , silent: true
         , user: {
             name: 'Travis CI'
