@@ -13,15 +13,34 @@ var Main = React.createClass({displayName: "Main",
     return {};
   }
 
-, render: function() {
+, renderContent: function() {
     if (!this.state.steamId) {
       return React.createElement(SteamLogin, null);
     }
 
-    return React.createElement("h1", null, this.state.steamid);
+    return React.createElement("h2", null, this.state.steamid);
+  }
+
+, render: function() {
+    var content = this.renderContent();
+    return (
+      React.createElement("div", null, 
+        React.createElement("h1", null, "Steam Turbine"), 
+        content, 
+        React.createElement("p", null, "Version ", this.props.version)
+      )
+    );
   }
 
 , componentDidMount: function() {
+    if (document.cookie) {
+      var cookies = qs.parse(document.cookie, ';');
+      if (cookies.steamid) {
+        this.setState({ steamId: cookies.steamid });
+        return;
+      }
+    }
+
     if (!location.search) return;
     
     var query = qs.parse(location.search.substr(1)) || {};
@@ -32,6 +51,7 @@ var Main = React.createClass({displayName: "Main",
     this.setState({
       steamId: steamId
     });
+    document.cookie = 'steamid=' + steamId;
   }
 });
 
@@ -72,7 +92,7 @@ var pkg = require('./package.json')
 var Main = require('./components/main')
   ;
 
-React.render(React.createElement(Main, null), document.getElementById('content'));
+React.render(React.createElement(Main, {version: pkg.version}), document.getElementById('content'));
 
 },{"./components/main":1,"./package.json":154,"react":153}],4:[function(require,module,exports){
 // shim for using process in browser
@@ -18543,7 +18563,7 @@ module.exports = require('./lib/React');
 },{"./lib/React":35}],154:[function(require,module,exports){
 module.exports={
   "name": "steamturbine",
-  "version": "1.0.0-6698",
+  "version": "1.0.0-7428",
   "description": "Steam games explorer",
   "private": true,
   "main": "index.js",
