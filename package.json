@@ -29,6 +29,7 @@
     "reactify": "^0.17.1"
   },
   "dependencies": {
+    "querystring": "^0.2.0",
     "react": "^0.12.2"
   }
 }
