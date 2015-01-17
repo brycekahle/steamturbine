@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+- '0.10'
+after_success:
+- npm run pages
+env:
+  global:
+    secure: 0owU5Lx+1F0fieZlrsyE/IxM78DSMnMR2h/KzphgstkZhKvQ/XLMnbs/jI4x2ha38FDf1bN3QJNZ9U4tdGGBfNEIqd5LhsH2vtmUP/pjQhmv9T6U9dRgHUSYX8VcNVD327g4MTXRbrUGtpeU7d9tWLe5QLBZwIgGGB4PHZxAADE=

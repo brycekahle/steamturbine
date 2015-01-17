@@ -1,0 +1,34 @@
+{
+  "name": "steamturbine",
+  "version": "1.0.0",
+  "description": "Steam games explorer",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pages": "grunt pages",
+    "build": "grunt build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brycekahle/steamturbine.git"
+  },
+  "author": "Bryce Kahle <bkahle@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brycekahle/steamturbine/issues"
+  },
+  "homepage": "https://github.com/brycekahle/steamturbine",
+  "devDependencies": {
+    "browserify": "^8.1.1",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.3.0",
+    "grunt-bump": "0.0.16",
+    "grunt-cli": "^0.1.13",
+    "grunt-gh-pages": "^0.9.1",
+    "reactify": "^0.17.1"
+  },
+  "dependencies": {
+    "react": "^0.12.2"
+  }
+}
