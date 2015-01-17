@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "app.css",
+	"sources": [
+		"../../sass/app.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AAEA;EACE,aAAa;EACb,WAAW;;AAGb;EACE,kBAAkB;EAClB,OAAO;EACP,OAAO;;AAGT,SAAS,SAAS,SAAS;EAEvB,SAAS;;EACT,SAAS;;;AAGb,SAAS;EACL,OAAO;;AAGX;EACE,OAAO;EACP,QAAQ;EACR,OAAO;EACP,SAAS",
+	"names": []
+}
