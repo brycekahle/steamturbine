@@ -2,9 +2,13 @@
 
 var React = require('react')
   , qs = require('querystring')
+  , Nanobar = require('nanobar')
+  , _ = require('lodash')
   ;
 
 var SteamLogin = require('./steam-login')
+  , config = require('../config.json')
+  , api = require('../lib/steam-web-api')(config.steam.key)
   ;
 
 var Main = React.createClass({
@@ -17,7 +21,13 @@ var Main = React.createClass({
       return <SteamLogin />;
     }
 
-    return <h2>{this.state.steamId}</h2>;
+    if (!this.state.games) return null;
+
+    return this.state.games.map(function (g) {
+      return (
+        <img key={g.appid} className='game-logo' src={'http://media.steampowered.com/steamcommunity/public/images/apps/' + g.appid + '/' + g.img_logo_url +'.jpg'} />
+      );
+    });
   }
 
 , render: function() {
@@ -25,8 +35,10 @@ var Main = React.createClass({
     return (
       <div>
         <h1>Steam Turbine</h1>
-        {content}
-        <p>Version {this.props.version}</p>
+        <div className='clearfix'>
+          {content}
+        </div>
+        <p>Version {this.props.version} - <a href='http://steampowered.com'>Powered by Steam</a></p>
       </div>
     );
   }
@@ -51,6 +63,21 @@ var Main = React.createClass({
       steamId: steamId
     });
     document.cookie = 'steamId=' + steamId;
+
+    var nb = new Nanobar({
+      bg: '#6E8758'
+    , id: 'nb'
+    });
+
+    api.ownedGames({ include_appinfo: '1' }).then(function (resp) {
+      nb.go(100);
+      var games = _.sortBy(resp.data, function (g) { return -g.playtime_forever; });
+      this.setState({
+        games: games
+      });
+    }, function (e) {
+      console.error(e);
+    });
   }
 });
 

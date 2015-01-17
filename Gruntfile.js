@@ -29,10 +29,32 @@ module.exports = function(grunt) {
   , browserify: {
       dist: {
         options: {
-          transform: ['reactify']
+          browserifyOptions: {
+            debug: true
+          }
+        , transform: [
+            'reactify'
+          ]
+        , plugin: [
+            ['minifyify', {
+              output: 'public/js/app.js.map'
+            , map: '/js/app.js.map'
+            , compressPath: __dirname
+            }]
+          ]
         }
       , files: {
-          'public/app.js': ['index.js']
+          'public/js/app.js': ['index.js']
+        }
+      }
+    }
+  , sass: {
+      options: {
+        sourceMap: true
+      }
+    , dist: {
+        files: {
+          'public/css/app.css': 'sass/app.scss'
         }
       }
     }
@@ -41,10 +63,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-sass');
 
   grunt.registerTask('build', [
     'bump:git'
   , 'browserify:dist'
+  , 'sass:dist'
   ]);
   grunt.registerTask('pages', [
     'gh-pages:travis'

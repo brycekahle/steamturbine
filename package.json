@@ -26,9 +26,14 @@
     "grunt-bump": "0.0.16",
     "grunt-cli": "^0.1.13",
     "grunt-gh-pages": "^0.9.1",
+    "grunt-sass": "^0.17.0",
+    "minifyify": "^5.0.0",
     "reactify": "^0.17.1"
   },
   "dependencies": {
+    "browser-http": "^3.0.3",
+    "lodash": "^2.4.1",
+    "nanobar": "^0.2.1",
     "querystring": "^0.2.0",
     "react": "^0.12.2"
   }
