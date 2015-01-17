@@ -17,7 +17,7 @@ var Main = React.createClass({
       return <SteamLogin />;
     }
 
-    return <h2>{this.state.steamid}</h2>;
+    return <h2>{this.state.steamId}</h2>;
   }
 
 , render: function() {
