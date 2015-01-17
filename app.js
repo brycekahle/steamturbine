@@ -35,8 +35,8 @@ var Main = React.createClass({displayName: "Main",
 , componentDidMount: function() {
     if (document.cookie) {
       var cookies = qs.parse(document.cookie, ';');
-      if (cookies.steamid) {
-        this.setState({ steamId: cookies.steamid });
+      if (cookies.steamId) {
+        this.setState({ steamId: cookies.steamId });
         return;
       }
     }
@@ -51,7 +51,7 @@ var Main = React.createClass({displayName: "Main",
     this.setState({
       steamId: steamId
     });
-    document.cookie = 'steamid=' + steamId;
+    document.cookie = 'steamId=' + steamId;
   }
 });
 
@@ -18563,7 +18563,7 @@ module.exports = require('./lib/React');
 },{"./lib/React":35}],154:[function(require,module,exports){
 module.exports={
   "name": "steamturbine",
-  "version": "1.0.0-62e3",
+  "version": "1.0.0-0fb1",
   "description": "Steam games explorer",
   "private": true,
   "main": "index.js",
