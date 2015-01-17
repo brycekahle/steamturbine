@@ -34,8 +34,8 @@ var Main = React.createClass({
 , componentDidMount: function() {
     if (document.cookie) {
       var cookies = qs.parse(document.cookie, ';');
-      if (cookies.steamid) {
-        this.setState({ steamId: cookies.steamid });
+      if (cookies.steamId) {
+        this.setState({ steamId: cookies.steamId });
         return;
       }
     }
@@ -50,7 +50,7 @@ var Main = React.createClass({
     this.setState({
       steamId: steamId
     });
-    document.cookie = 'steamid=' + steamId;
+    document.cookie = 'steamId=' + steamId;
   }
 });
 
