@@ -33,7 +33,7 @@ var Main = React.createClass({
 
 , componentDidMount: function() {
     if (document.cookie) {
-      var cookies = qs.parse(document.cookie, ';');
+      var cookies = qs.parse(document.cookie, '; ');
       if (cookies.steamId) {
         this.setState({ steamId: cookies.steamId });
         return;
@@ -44,7 +44,7 @@ var Main = React.createClass({
     
     var query = qs.parse(location.search.substr(1)) || {};
     var id = query['openid.claimed_id'];
-    if (!id) return;
+    if (query['openid.mode'] !== 'id_res' || !id) return;
 
     var steamId = id.replace('http://steamcommunity.com/openid/id/', '');
     this.setState({
