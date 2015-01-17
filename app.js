@@ -18,7 +18,7 @@ var Main = React.createClass({displayName: "Main",
       return React.createElement(SteamLogin, null);
     }
 
-    return React.createElement("h2", null, this.state.steamid);
+    return React.createElement("h2", null, this.state.steamId);
   }
 
 , render: function() {
@@ -18563,7 +18563,7 @@ module.exports = require('./lib/React');
 },{"./lib/React":35}],154:[function(require,module,exports){
 module.exports={
   "name": "steamturbine",
-  "version": "1.0.0-7428",
+  "version": "1.0.0-62e3",
   "description": "Steam games explorer",
   "private": true,
   "main": "index.js",
