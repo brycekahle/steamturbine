@@ -7,4 +7,4 @@ var pkg = require('./package.json')
 var Main = require('./components/main')
   ;
 
-React.render(<Main />, document.getElementById('content'));
+React.render(<Main version={pkg.version} />, document.getElementById('content'));

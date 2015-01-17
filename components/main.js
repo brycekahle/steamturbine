@@ -12,15 +12,34 @@ var Main = React.createClass({
     return {};
   }
 
-, render: function() {
+, renderContent: function() {
     if (!this.state.steamId) {
       return <SteamLogin />;
     }
 
-    return <h1>{this.state.steamid}</h1>;
+    return <h2>{this.state.steamid}</h2>;
+  }
+
+, render: function() {
+    var content = this.renderContent();
+    return (
+      <div>
+        <h1>Steam Turbine</h1>
+        {content}
+        <p>Version {this.props.version}</p>
+      </div>
+    );
   }
 
 , componentDidMount: function() {
+    if (document.cookie) {
+      var cookies = qs.parse(document.cookie, ';');
+      if (cookies.steamid) {
+        this.setState({ steamId: cookies.steamid });
+        return;
+      }
+    }
+
     if (!location.search) return;
     
     var query = qs.parse(location.search.substr(1)) || {};
@@ -31,6 +50,7 @@ var Main = React.createClass({
     this.setState({
       steamId: steamId
     });
+    document.cookie = 'steamid=' + steamId;
   }
 });
 
